@@ -111,12 +111,20 @@ class Dictionary:
         """ Get keys from the dictionary """
         return [k for k, _ in self._get_values()]
 
+    def get(self, key: Any, default=None) -> Any:
+        """ Get a value from the dictionary """
+        try:
+            return self[key]
+        except KeyError:
+            return default
+
 
 if __name__ == '__main__':
     d = Dictionary([(f'{n}', f'{n}') for n in range(5)])
     print(d)
     print(repr(d))
     print(d.as_dict())
+    print()
 
     for k, v in d:
         print(f'{k}: {v}')
@@ -125,8 +133,14 @@ if __name__ == '__main__':
         d[str(n)] = str(n ** 2)
 
     print(d)
+    print()
 
     print(f'{'1' in d=}')
     print(f'{'100' in d=}')
+    print()
 
+    print(d.get('5'))
+    print(d.get('100'))
+
+    print()
     print('Done')
