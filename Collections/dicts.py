@@ -5,7 +5,7 @@ Assorted dictionary types
 """
 import copy
 from collections.abc import Iterable, Callable, Hashable
-from typing import Sized, Any
+from typing import Any
 
 
 class Dictionary:
@@ -247,61 +247,64 @@ class Dictionary:
 
 
 if __name__ == '__main__':
-    d = Dictionary([(f'{n}', f'{n}') for n in range(5)])
-    print(d)
-    print(repr(d))
-    print(d.as_dict())
-    print()
+    def main():
+        d = Dictionary([(f'{n}', f'{n}') for n in range(5)])
+        print(d)
+        print(repr(d))
+        print(d.as_dict())
+        print()
 
-    for k, v in d:
-        print(f'{k}: {v}')
+        for k, v in d:
+            print(f'{k}: {v}')
 
-    for n in range(10):
-        d[str(n)] = str(n ** 2)
+        for n in range(10):
+            d[str(n)] = str(n ** 2)
 
-    print(d)
-    print()
+        print(d)
+        print()
 
-    print(f'{'1' in d=}')
-    print(f'{'100' in d=}')
-    print()
+        print(f'{'1' in d=}')
+        print(f'{'100' in d=}')
+        print()
 
-    print(d.get('5'))
-    print(d.get('100'))
-    print()
+        print(d.get('5'))
+        print(d.get('100'))
+        print()
 
-    d.update((n, n + 1) for n in range(50, 70, 2))
+        d.update((n, n + 1) for n in range(50, 70, 2))
 
-    print(d)
-    print()
+        print(d)
+        print()
 
-    d.update({n: n + 1 for n in range(20, 40, 2)})
-    print(d)
+        d.update({n: n + 1 for n in range(20, 40, 2)})
+        print(d)
 
-    print()
+        print()
 
-    print(len(d))
-    print(d.popitem())
-    print(d.pop(20))
-    print(d)
-    print(len(d))
+        print(len(d))
+        print(d.popitem())
+        print(d.pop(20))
+        print(d)
+        print(len(d))
 
-    new_d = Dictionary()
-    new_d.setdefault('l', list).extend([10, 20, 30])
-    print(new_d)
+        new_d = Dictionary()
+        new_d.setdefault('l', list).extend([10, 20, 30])
+        print(new_d)
 
-    new_d = Dictionary.fromkeys(range(5), 0)
-    print(new_d)
+        new_d = Dictionary.fromkeys(range(5), 0)
+        print(new_d)
 
-    new_d = Dictionary.fromkeys(range(5))
-    print(new_d)
+        new_d = Dictionary.fromkeys(range(5))
+        print(new_d)
 
-    another_d = copy.copy(new_d)
-    assert another_d == new_d
-    assert new_d != d
-    print(new_d.pop('a', None))
-    try:
-        print(new_d.pop('b'))
-    except KeyError as e:
-        print(f'Got {e=}')
-    print('Done')
+        another_d = copy.copy(new_d)
+        assert another_d == new_d
+        assert new_d != d
+        print(new_d.pop('a', None))
+        try:
+            print(new_d.pop('b'))
+        except KeyError as e:
+            print(f'Got {e=}')
+        print('Done')
+
+    main()
