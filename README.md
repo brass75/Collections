@@ -34,5 +34,5 @@ Feel free to fork and create a PR to add any additional collections you would li
 If you want to add a new collection please make sure to update this README.md with
 information on the collection(s) you add.
 
-As I get farther along in this process I will add testing and packaging but I'm not 
+As I get farther along in this process I will add testing and packaging, but I'm not 
 that far along yet.
